@@ -1,0 +1,36 @@
+name: mc-store-platform
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install dependencies
+        # Hier nutzt du npm direkt mit deinem Flag
+        run: npm i --legacy-peer-deps
+
+      - name: Run linter
+        run: deno lint
+
+      - name: Build project
+        # 'dev' geht im CI nicht, daher meist 'build'
+        run: npm run build 
