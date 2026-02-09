@@ -18,6 +18,25 @@ Open-source, community-driven Minecraft store platform inspired by modern storef
 <img width="1869" height="1756" alt="image" src="https://github.com/user-attachments/assets/dd7fa206-431b-4302-9d75-9f0a90b9b96d" />
 
 
+### Screenshots
+
+**Homepage**
+
+<img width="1869" height="1497" alt="Homepage" src="https://github.com/user-attachments/assets/7f15c003-b60e-4694-87ef-c68f0b6efe09" />
+
+<br />
+
+**Admin Login**
+
+<img width="1867" height="896" alt="Admin login" src="https://github.com/user-attachments/assets/b3c699af-b984-4425-976a-46a6214e651d" />
+
+<br />
+
+**Admin Dashboard**
+
+<img width="1869" height="1756" alt="Admin dashboard" src="https://github.com/user-attachments/assets/dd7fa206-431b-4302-9d75-9f0a90b9b96d" />
+
+
 ## Tech stack
 
 - Next.js (App Router)
@@ -66,8 +85,8 @@ Example (enable/disable modules):
 
 ```ts
 modules: {
-  discord: { enabled: true, label: "gg/qandqservices", url: "https://discord.gg/qandqservices" },
-  serverIp: { enabled: true, label: "qandqservices.me" }
+    discord: { enabled: true, label: "gg/qandqservices", url: "https://discord.gg/qandqservices" },
+    serverIp: { enabled: true, label: "qandqservices.me" }
 }
 ```
 
