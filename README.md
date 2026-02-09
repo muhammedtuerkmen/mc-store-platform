@@ -9,15 +9,6 @@ Open-source, community-driven Minecraft store platform inspired by modern storef
 - Minimal admin UI for settings (UI only for now)
 - Designed to be extended into a full all-in-one platform
 
-### Pictures
-
-<img width="1869" height="1497" alt="image" src="https://github.com/user-attachments/assets/7f15c003-b60e-4694-87ef-c68f0b6efe09" />
-
-<img width="1867" height="896" alt="image" src="https://github.com/user-attachments/assets/b3c699af-b984-4425-976a-46a6214e651d" />
-
-<img width="1869" height="1756" alt="image" src="https://github.com/user-attachments/assets/dd7fa206-431b-4302-9d75-9f0a90b9b96d" />
-
-
 ### Screenshots
 
 **Homepage**
