@@ -1,4 +1,4 @@
-name: Deno Demo Deployment
+name: Deployment
 
 on:
   push:
@@ -21,8 +21,8 @@ jobs:
       - name: Setup Node.js (für Next.js Build)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          # cache entfernt, weil kein Lockfile im Repo liegt
 
       - name: Setup Deno
         uses: denoland/setup-deno@v2
@@ -33,23 +33,17 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Run Deno Lint (Non-blocking)
-        # Erlaubt Fehler wegen 'sloppy imports' ohne den Build zu stoppen
         run: deno lint || true
 
       - name: Build Next.js Project
         env:
-          # Verhindert Abbruch bei TS-Warnungen & deaktiviert Telemetrie
-          CI: false 
-          NEXT_TELEMETRY_DISABLED: 1
-        # Wir nutzen 'npx next build' direkt, um sicherzugehen, dass die tsconfig.json Pfade korrekt aufgelöst werden
+          CI: "false"
+          NEXT_TELEMETRY_DISABLED: "1"
         run: npx next build
 
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "mc-store-platform"
-          # WICHTIG: Next.js Projekte brauchen oft einen speziellen Adapter für Deno.
-          # Wenn du eine statische Seite hast, ist root: "out".
-          # Wenn es eine SSR App ist, muss der entrypoint deine Deno-Server-Datei sein.
-          entrypoint: "main.ts" 
+          entrypoint: "main.ts"
           root: "."
