@@ -8,42 +8,27 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (für Next.js Build)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          # cache entfernt, weil kein Lockfile im Repo liegt
-
-      - name: Setup Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+          # optional: wenn du später ein package-lock.json hast:
+          # cache: "npm"
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
-
-      - name: Run Deno Lint (Non-blocking)
-        run: deno lint || true
 
       - name: Build Next.js Project
         env:
           CI: "false"
           NEXT_TELEMETRY_DISABLED: "1"
         run: npx next build
-
-      - name: Deploy to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "mc-store-platform"
-          entrypoint: "main.ts"
-          root: "."
