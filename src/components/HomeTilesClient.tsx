@@ -6,10 +6,16 @@ import { siteConfig } from "@/data/siteConfig"
 
 export default function HomeTilesClient() {
   const preview = useAdminPreview()
+  const discordUrl = preview.discordUrl?.trim()
   const highlight = {
     tileId: preview.badgeTileId,
     text: preview.badgeText
   }
+  const tiles = siteConfig.tiles.map((tile) =>
+    tile.id === "discord"
+      ? { ...tile, href: discordUrl || siteConfig.modules.discord.url || tile.href }
+      : tile
+  )
 
-  return <TilesGrid tiles={siteConfig.tiles} highlightBadge={highlight} />
+  return <TilesGrid tiles={tiles} highlightBadge={highlight} />
 }

@@ -63,6 +63,15 @@ export default function AdminPage() {
                   />
                 </div>
                 <div className="space-y-2">
+                  <label className="text-xs uppercase tracking-widest text-white text-opacity-60">Discord URL</label>
+                  <input
+                    className="input-field"
+                    value={draft.discordUrl}
+                    onChange={(event) => setDraft((prev) => ({ ...prev, discordUrl: event.target.value }))}
+                    type="text"
+                  />
+                </div>
+                <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest text-white text-opacity-60">Server IP</label>
                   <input
                     className="input-field"
