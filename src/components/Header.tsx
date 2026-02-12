@@ -81,11 +81,13 @@ const ModuleCard = ({
 
 export default function Header({ onLoginClick }: HeaderProps) {
   const preview = useAdminPreview()
+  const discordUrl = preview.discordUrl?.trim()
   const modules = {
     discord: {
       ...siteConfig.modules.discord,
       label: preview.discordInvite,
-      enabled: preview.modules.discord
+      enabled: preview.modules.discord,
+      url: discordUrl || siteConfig.modules.discord.url
     },
     serverIp: {
       ...siteConfig.modules.serverIp,

@@ -6,6 +6,7 @@ export type AdminDraft = {
   brandName: string
   tagline: string
   discordInvite: string
+  discordUrl: string
   serverIp: string
   badgeTileId: string
   badgeText: string
@@ -19,6 +20,7 @@ export const adminDefaultDraft: AdminDraft = {
   brandName: siteConfig.brand.name,
   tagline: siteConfig.brand.tagline,
   discordInvite: siteConfig.modules.discord.label,
+  discordUrl: siteConfig.modules.discord.url ?? "",
   serverIp: siteConfig.modules.serverIp.label,
   badgeTileId: siteConfig.badges.highlight.tileId,
   badgeText: siteConfig.badges.highlight.text,
