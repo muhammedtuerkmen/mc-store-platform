@@ -1,9 +1,8 @@
 "use client"
 
-import { ReactNode, useState } from "react"
+import { ReactNode } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import LoginModal from "@/components/LoginModal"
 import Link from "next/link"
 
 type SubnavConfig = {
@@ -17,11 +16,9 @@ type PageShellProps = {
 }
 
 export default function PageShell({ children, subnav }: PageShellProps) {
-  const [loginOpen, setLoginOpen] = useState(false)
-
   return (
     <div className="min-h-screen">
-      <Header onLoginClick={() => setLoginOpen(true)} />
+      <Header />
       {subnav ? (
         <div className="section-wrap mb-10">
           <div className="panel-card flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -31,15 +28,11 @@ export default function PageShell({ children, subnav }: PageShellProps) {
               </span>
               <span>{subnav.label}</span>
             </Link>
-            <button className="ghost-button" onClick={() => setLoginOpen(true)} type="button">
-              Login
-            </button>
           </div>
         </div>
       ) : null}
       <main className="section-wrap pb-20">{children}</main>
       <Footer />
-      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
     </div>
   )
 }

@@ -13,7 +13,7 @@ export type TileConfig = {
   cta: string
   theme: string
   size: "xl" | "lg" | "md" | "sm"
-  layout: "full" | "wide" | "stackTop" | "stackBottom"
+  layout: "full" | "wide" | "stackTop" | "stackBottom" | "tileLarge" | "tileMedium" | "tileSmall" | "tileTall" | "tileSmallTall"
   badge?: string
   href?: string
   image?: {
@@ -27,6 +27,7 @@ export type TileConfig = {
   backgroundTint?: string
   backgroundOpacity?: number
   artSize?: "xs" | "sm" | "md" | "lg" | "xl" | "hero" | "mega"
+  disabled?: boolean
 }
 
 export type RankProduct = {
@@ -43,11 +44,11 @@ export type HighlightBadge = {
 
 export const siteConfig = {
   brand: {
-    name: "qandqservices",
-    tagline: "PLAY.QANDQSERVICES.ME",
+    name: "FirstMC",
+    tagline: "FIRSTMC.DE",
     logo: {
-      src: "/assets/branding/examplelogo.png",
-      alt: "qandqservices logo",
+      src: "/assets/branding/firstmc.png",
+      alt: "FirstMC logo",
       width: 320,
       height: 120
     }
@@ -55,53 +56,33 @@ export const siteConfig = {
   modules: {
     discord: {
       enabled: true,
-      inviteCode: "qandqservices",
-      label: "gg/qandqservices",
-      detail: "11,618 members",
-      url: "https://discord.gg/qandqservices"
+      inviteCode: "firstmc",
+      label: "gg/firstmc",
+      detail: "2,500+ members",
+      url: "https://discord.gg/firstmc"
     } as ModuleConfig,
     serverIp: {
       enabled: true,
-      label: "qandqservices.de",
+      label: "firstmc.de",
       detail: "58 online"
     } as ModuleConfig
   },
   badges: {
     highlight: {
-      tileId: "combat",
-      text: "NEW NEW NEW"
+      tileId: "ranks",
+      text: "NEU NEU NEU"
     } as HighlightBadge
   },
   tiles: [
     {
-      id: "combat",
-      title: "Combat Effects",
-      description: "Flex on your opponents with awesome effects.",
-      cta: "Click to Browse",
-      theme: "tile-orange",
-      size: "xl",
-      layout: "full",
-      image: {
-        src: "/assets/tiles/effects.png",
-        alt: "Combat effects preview"
-      },
-      backgroundImage: {
-        src: "/assets/tiles/courtyard_640x360.png",
-        alt: "Combat effects background"
-      },
-      backgroundTint: "rgba(245, 124, 50, 0.72)",
-      backgroundOpacity: 0.28,
-      artSize: "mega"
-    },
-    {
       id: "ranks",
-      title: "Ranks",
-      description: "Unlock core perks and progression boosts.",
-      cta: "Click to Browse",
+      title: "Ränge",
+      description: "Schalte Kern-Perks und Fortschritts-Vorteile frei.",
+      cta: "Im Shop ansehen",
       theme: "tile-gold",
-      size: "lg",
-      layout: "wide",
-      href: "/ranks",
+      size: "xl",
+      layout: "tileLarge",
+      href: "https://shop.firstmc.de/",
       image: {
         src: "/assets/tiles/ranks.png",
         alt: "Ranks preview"
@@ -112,16 +93,38 @@ export const siteConfig = {
       },
       backgroundTint: "rgba(245, 196, 65, 0.72)",
       backgroundOpacity: 0.3,
-      artSize: "hero"
+      artSize: "mega"
+    },
+    {
+      id: "events",
+      title: "Firstys",
+      description: "Die exklusive Währung für Kosmetika, Ränge und Specials.",
+      cta: "Shop Firstys",
+      theme: "tile-green",
+      size: "md",
+      layout: "tileSmall",
+      href: "https://shop.firstmc.de/category/firstys",
+      image: {
+        src: "/assets/tiles/firstys.png",
+        alt: "Firstys category preview"
+      },
+      backgroundImage: {
+        src: "/assets/tiles/farms_640x360.png",
+        alt: "Firstys background"
+      },
+      backgroundTint: "rgba(43, 213, 127, 0.72)",
+      backgroundOpacity: 0.3,
+      artSize: "sm"
     },
     {
       id: "rank-upgrades",
-      title: "Rank Upgrades",
-      description: "Level up your status with targeted upgrades.",
-      cta: "Click to Browse",
+      title: "Rang-Upgrade",
+      description: "Hebe deinen Status mit gezielten Upgrades auf.",
+      cta: "Im Shop ansehen",
       theme: "tile-blue",
       size: "md",
-      layout: "stackTop",
+      layout: "tileMedium",
+      href: "https://shop.firstmc.de/",
       image: {
         src: "/assets/tiles/upgrades_340x466.png",
         alt: "Rank upgrades preview"
@@ -130,36 +133,18 @@ export const siteConfig = {
         src: "/assets/tiles/farms_640x360.png",
         alt: "Rank upgrades background"
       },
-      backgroundTint: "rgba(63, 108, 246, 0.8)"
-    },
-    {
-      id: "events",
-      title: "Events",
-      description: "Limited-time challenges and rewards.",
-      cta: "Click to Browse",
-      theme: "tile-green",
-      size: "md",
-      layout: "stackBottom",
-      image: {
-        src: "/assets/tiles/events_600x438.png",
-        alt: "Events preview"
-      },
-      backgroundImage: {
-        src: "/assets/tiles/farms_640x360.png",
-        alt: "Events background"
-      },
-      backgroundTint: "rgba(43, 213, 127, 0.72)",
-      backgroundOpacity: 0.3,
-      artSize: "md"
+      backgroundTint: "rgba(63, 108, 246, 0.8)",
+      artSize: "lg"
     },
     {
       id: "discord",
       title: "Discord",
-      description: "Join the community for updates and drops.",
-      cta: "Join the Discord",
+      description: "Trete der Community für Updates und Drops bei.",
+      cta: "Discord beitreten",
       theme: "tile-purple",
-      size: "sm",
-      layout: "full",
+      size: "md",
+      layout: "tileSmallTall",
+      href: "https://discord.gg/firstmc",
       image: {
         src: "/assets/tiles/discord_340x466.png",
         alt: "Discord community preview"
@@ -170,28 +155,28 @@ export const siteConfig = {
       },
       backgroundTint: "rgba(63, 108, 246, 0.72)",
       backgroundOpacity: 0.28,
-      artSize: "xs"
+      artSize: "sm"
     }
   ] as TileConfig[],
   ranks: {
-    headline: "Ranks",
+    headline: "Shop",
     description:
-      "Purchase ranks to unlock special features such as private events, settings, practice bots, armor trims, commands, and more.",
+      "Kaufe Ränge und Kosmetika, um spezielle Features wie private Events, Einstellungen, Übungsbots, Rüstungsfassaden, Befehle und mehr freizuschalten.",
     products: [
-      { id: "silver", name: "Silver", price: "EUR 7.13", accent: "rank-silver" },
+      { id: "silver", name: "Silber", price: "EUR 7.13", accent: "rank-silver" },
       { id: "gold", name: "Gold", price: "EUR 13.08", accent: "rank-gold" },
-      { id: "diamond", name: "Diamond", price: "EUR 20.22", accent: "rank-diamond" },
-      { id: "ruby", name: "Ruby", price: "EUR 36.88", accent: "rank-ruby" }
+      { id: "diamond", name: "Diamant", price: "EUR 20.22", accent: "rank-diamond" },
+      { id: "ruby", name: "Rubin", price: "EUR 36.88", accent: "rank-ruby" }
     ] as RankProduct[]
   },
   footer: {
-    copyright: "Copyright 2025 qandqservices. All Rights Reserved. We do not have affiliation with any real world brands.",
+    copyright: "Copyright 2025 FirstMC. Alle Rechte vorbehalten. Wir haben keine Verbindung zu realen Marken.",
     legal:
-      "This website and its checkout process is owned & operated by Tebex Limited, who handle product fulfillment, billing support and refunds.",
+      "Diese Website und der Checkout-Prozess werden von Tebex Limited betrieben, die für Produkterfüllung, Abrechnungssupport und Erstattungen zuständig sind.",
     links: [
       { label: "Impressum", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
-      { label: "Privacy Policy", href: "#" }
+      { label: "Datenschutz", href: "#" },
+      { label: "Nutzungsbedingungen", href: "#" }
     ]
   }
 }

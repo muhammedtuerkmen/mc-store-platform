@@ -21,7 +21,7 @@ export default function Logo({ brandName, tagline }: LogoProps) {
             width={siteConfig.brand.logo.width}
             height={siteConfig.brand.logo.height}
             priority
-            className="h-16 w-auto sm:h-20 lg:h-24"
+            className="h-32 w-auto sm:h-40 lg:h-48"
           />
         </div>
         <span className="sr-only">{name}</span>

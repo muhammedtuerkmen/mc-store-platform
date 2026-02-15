@@ -7,7 +7,12 @@ const layoutClasses: Record<TileConfig["layout"], string> = {
   full: "lg:col-span-3",
   wide: "lg:col-span-2 lg:row-span-2",
   stackTop: "lg:col-start-3 lg:row-start-2",
-  stackBottom: "lg:col-start-3 lg:row-start-3"
+  stackBottom: "lg:col-start-3 lg:row-start-3",
+  tileLarge: "lg:col-span-2 lg:row-span-2",
+  tileMedium: "lg:col-span-2",
+  tileSmall: "lg:col-span-1",
+  tileTall: "lg:col-span-1 lg:row-span-2",
+  tileSmallTall: "lg:col-span-1 lg:row-span-2"
 }
 
 const sizeClasses: Record<TileConfig["size"], string> = {
@@ -88,7 +93,17 @@ export default function TilesGrid({
           </>
         )
 
-        const className = `tile-card ${tile.theme} ${layoutClasses[tile.layout]} ${sizeClasses[tile.size]} animate-fade-up`
+        const className = `tile-card ${tile.theme} ${layoutClasses[tile.layout]} ${sizeClasses[tile.size]} animate-fade-up ${
+          tile.disabled ? "opacity-50 grayscale cursor-not-allowed" : ""
+        }`
+
+        if (tile.disabled) {
+          return (
+            <div key={tile.id} className={className}>
+              {content}
+            </div>
+          )
+        }
 
         if (tile.href) {
           return (
